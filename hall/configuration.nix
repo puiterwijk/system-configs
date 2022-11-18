@@ -7,6 +7,7 @@
       ./users.nix
     ];
 
+  environment.defaultPackages = [];
   environment.systemPackages = with pkgs; [
     vim
   ];
