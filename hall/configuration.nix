@@ -39,6 +39,7 @@
   ];
 
   services.openssh.enable = true;
+  services.resolved.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   nix = {
