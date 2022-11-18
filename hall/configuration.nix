@@ -52,6 +52,16 @@
       ];
     };
   };
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    rebootWindow = {
+      lower = "03:00";
+      upper = "05:00";
+    };
+    channel = https://nixos.org/channels/nixos-22.05;
+    persistent = false;
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
