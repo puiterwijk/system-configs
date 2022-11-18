@@ -13,6 +13,7 @@
 
   environment.variables.EDITOR = "vim";
 
+  users.mutableUsers = false;
   users.users.puiterwijk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
