@@ -3,12 +3,15 @@
   imports =
     [
       ./hardware-configuration.nix
+      (fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master")
     ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "hall";
   time.timeZone = "Europe/Amsterdam";
+
+  environment.variables.EDITOR = "vim";
 
   users.users.puiterwijk = {
     isNormalUser = true;
@@ -18,11 +21,14 @@
       kubelogin
       git
       wget
+      azure-cli
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN3wiwWLkUK1rmZnMCN9tVujxOOv44bb6tm7sz/cgZk/ GitHub key"
     ];
   };
+
+  services.vscode-server.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
 
