@@ -40,7 +40,18 @@
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://enarx.cachix.org"
+      ];
+      trusted-public-keys = [
+        "enarx.cachix.org-1:Izq345bPMThAWUW830X3uoGTTBjXW7ltGlfTBErgm4w="
+      ];
+    };
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
