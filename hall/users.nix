@@ -5,7 +5,7 @@
   ];
   services.vscode-server.enable = true;
 
-  environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustcSrc}";
+  environment.sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustcSrc}";
   users.users.puiterwijk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -21,8 +21,12 @@
 
       cargo
       rustc
+      gcc
+      binutils
       rustPlatform.rustcSrc
       rustPlatform.rustLibSrc
+
+      terraform
     ];
 
     openssh.authorizedKeys.keys = [
