@@ -10,6 +10,7 @@
 
   services.openssh.enable = true;
   services.resolved.enable = true;
+  services.resolved.dnssec = "false";
 
   networking.firewall.allowedTCPPorts = [ 22 ];
 
