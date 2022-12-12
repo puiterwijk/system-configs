@@ -34,7 +34,7 @@
       lower = "03:00";
       upper = "05:00";
     };
-    channel = https://nixos.org/channels/nixos-22.05;
+    channel = https://nixos.org/channels/nixos-22.11;
     persistent = false;
   };
 
