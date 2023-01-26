@@ -1,16 +1,19 @@
 { config, pkgs, ... }:
-{
+let
+	unstable = import <nixos-unstable> {};
+in {
   imports = [
     (fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master")
   ];
   services.vscode-server.enable = true;
 
-  environment.sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustcSrc}";
+  #environment.sessionVariables.RUST_SRC_PATH = "${pkgs.rust.packages.rustPlatform.rustcSrc}";
   users.users.puiterwijk = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       kubectl
+      fluxcd
       kubelogin
       git
       wget
@@ -19,14 +22,21 @@
       tmux
       _1password
 
-      cargo
-      rustc
+      unstable.cargo
+      unstable.rustc
       gcc
       binutils
-      rustPlatform.rustcSrc
-      rustPlatform.rustLibSrc
+      unstable.rustPlatform.rustcSrc
+      unstable.rustPlatform.rustLibSrc
+
+      go
+      python3
+      virtualenv
 
       terraform
+
+      softhsm
+      openssl
     ];
 
     openssh.authorizedKeys.keys = [
