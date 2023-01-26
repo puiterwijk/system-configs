@@ -12,6 +12,7 @@
   services.resolved.enable = true;
   services.resolved.dnssec = "false";
 
+  networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   nix = {

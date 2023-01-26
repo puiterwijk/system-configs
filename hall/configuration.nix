@@ -10,6 +10,7 @@
   environment.defaultPackages = [];
   environment.systemPackages = with pkgs; [
     vim
+    networkmanager-l2tp
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
