@@ -1,0 +1,4 @@
+---
+- name: devVM specific things
+  hosts: localhost
+  tasks: []
