@@ -7,6 +7,6 @@
       name: git
       state: present
    - name: Checkout system-configs
-    ansible.builtin.git:
-      repo: https://github.com/puiterwijk/system-configs.git
-      dest: system-configs
+     ansible.builtin.git:
+       repo: https://github.com/puiterwijk/system-configs.git
+       dest: system-configs
