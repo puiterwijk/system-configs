@@ -25,5 +25,6 @@ else
     SYSTEM_TPYE=traditional
 
     sudo dnf install -y ansible
-    curl --location --fail "${RAW_BASE}/playbooks/bootstrap.yml" | ansible-playbook /dev/stdin --extra-vars "setup_hostname=${hostname}" --extra-vars "user_home=${HOME}"
+    curl --location --fail "${RAW_BASE}/playbooks/bootstrap.yml" | ansible-playbook /dev/stdin --extra-vars "setup_hostname=${hostname}"
+    exec ansible-playbook $HOME/system-configs/playbooks/${hostname}.yml
 fi
