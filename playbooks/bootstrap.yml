@@ -11,6 +11,6 @@
   - name: Checkout system-configs
     ansible.builtin.git:
       repo: https://github.com/puiterwijk/system-configs.git
-      dest: "{{ user_dir }}/system-configs"
+      dest: "{{ user_home }}/system-configs"
 - name: Include actual playbook"
-  ansible.builtin.import_playbook: "{{ user_dir }}/system-configs/playbooks/{{ setup_hostname }}.yml"
+  ansible.builtin.import_playbook: "{{ user_home }}/system-configs/playbooks/{{ setup_hostname }}.yml"
