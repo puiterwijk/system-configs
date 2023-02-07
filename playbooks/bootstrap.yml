@@ -1,0 +1,12 @@
+---
+- name: Bootstrap the system configs
+  hosts: localhost
+  tasks:
+  - name: Install git
+    ansible.builtin.dnf:
+      name: git
+      state: present
+   - name: Checkout system-configs
+    ansible.builtin.git:
+      repo: https://github.com/puiterwijk/system-configs.git
+      dest: system-configs
