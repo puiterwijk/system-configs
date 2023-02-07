@@ -13,6 +13,7 @@ in {
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       kubectl
+      kubeseal
       fluxcd
       kubelogin
       git
