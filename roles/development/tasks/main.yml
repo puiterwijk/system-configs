@@ -4,5 +4,7 @@
     name: "{{ item }}"
     state: present
   with_items:
+  - strace
+  - gh
   - rust
   - cargo
