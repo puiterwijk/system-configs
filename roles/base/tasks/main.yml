@@ -1,3 +1,12 @@
+- name: Make sure dnf and yum are not used
+  become: true
+  ansible.builtin.copy:
+    content: "#/usr/bin/bash\necho \"Use Ansible\"\nexit 1"
+    dest: "/usr/bin/{{ item }}"
+    mode: "755"
+  with_items:
+  - yum
+  - dnf
 - name: Add 1Password RPM key
   become: true
   ansible.builtin.rpm_key:
