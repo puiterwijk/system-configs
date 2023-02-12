@@ -30,7 +30,7 @@
   - 1password-cli
 - name: Download dotfiles
   ansible.builtin.git:
-    repo: https://github.com/puiterwijk/dotfiles.git
+    repo: git@github.com:puiterwijk/dotfiles.git
     dest: "{{ ansible_facts.user_dir }}/dotfiles"
 - name: Setup dotfiles
   ansible.builtin.shell: "{{ ansible_facts.user_dir }}/dotfiles/setup.sh"
