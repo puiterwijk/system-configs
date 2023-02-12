@@ -11,3 +11,8 @@
     ansible.builtin.git:
       repo: https://github.com/puiterwijk/system-configs.git
       dest: "{{ ansible_facts.user_dir }}/system-configs"
+  - name: Create ansible folder
+    ansible.builtin.file:
+      path: "{{ ansible_facts.user_dir }}/.ansible/roles"
+      state: link
+      src: "{{ ansible_facts.user_dir }}/system-configs/roles"

@@ -1,4 +1,6 @@
 ---
 - name: devVM specific things
   hosts: localhost
-  tasks: []
+  roles:
+  - base
+  - development
