@@ -1,9 +1,8 @@
 - name: Make sure dnf and yum are not used
   become: true
-  ansible.builtin.copy:
-    content: "#/usr/bin/bash\necho \"Use Ansible\"\nexit 1"
-    dest: "/usr/bin/{{ item }}"
-    mode: "755"
+  ansible.builtin.file:
+    path: "/usr/bin/{{ item }}"
+    mode: "0000"
   with_items:
   - yum
   - dnf
