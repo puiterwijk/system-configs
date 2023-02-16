@@ -5,12 +5,7 @@ GIT_URL="${GITHUB_URL}.git"
 RAW_BASE="${GITHUB_URL}/raw/main/"
 
 ## CODE STARTS HERE
-if [ $# -ne 1 ];
-then
-    echo "Call: setup.sh <hostname>"
-    exit 1
-fi
-hostname=$1
+hostname=`hostname --short`
 
 echo "Setting up for hostname: ${hostname}"
 
