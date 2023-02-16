@@ -1,3 +1,7 @@
+- name: Checkout system-configs
+  ansible.builtin.git:
+    repo: git@github.com:puiterwijk/system-configs.git
+    dest: "{{ ansible_facts.user_dir }}/system-configs"
 - name: Make sure dnf and yum are not used
   become: true
   ansible.builtin.file:
