@@ -1,7 +1,11 @@
-- name: Checkout system-configs
-  ansible.builtin.git:
-    repo: git@github.com:puiterwijk/system-configs.git
-    dest: "{{ ansible_facts.user_dir }}/system-configs"
+- name: Allow passwordless sudo for wheel
+  become: true
+  community.general.sudoers:
+    name: wheel-sudo
+    state: present
+    group: wheel
+    commands: ALL
+    nopassword: true
 - name: Make sure dnf and yum are not used
   become: true
   ansible.builtin.file:
