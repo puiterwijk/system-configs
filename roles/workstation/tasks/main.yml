@@ -1,0 +1,26 @@
+- name: Add Chrome RPM key 1
+  become: true
+  ansible.builtin.rpm_key:
+    fingerprint: "4CCA 1EAF 950C EE4A B839 76DC A040 830F 7FAC 5991"
+    key: "https://dl.google.com/linux/linux_signing_key.pub"
+- name: Add Chrome RPM key 2
+  become: true
+  ansible.builtin.rpm_key:
+    fingerprint: "EB4C 1BFD 4F04 2F6D DDCC EC91 7721 F63B D38B 4796"
+    key: "https://dl.google.com/linux/linux_signing_key.pub"
+- name: Add Chrome repository
+  become: true
+  ansible.builtin.yum_repository:
+    baseurl: "https://dl.google.com/linux/chrome/rpm/stable/x86_64"
+    description: "Google Chrome Repository"
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+    includepkgs:
+    - google-chrome-stable
+    name: chrome
+- name: Install Chrome
+  become: true
+  ansible.builtin.package:
+    name: google-chrome-stable
+    state: present
