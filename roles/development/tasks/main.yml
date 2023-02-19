@@ -6,6 +6,5 @@
   with_items:
   - strace
   - gh
-  - rust
-  - cargo
   - golang
+- include_tasks: rust.yml
