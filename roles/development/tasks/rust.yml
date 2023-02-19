@@ -1,0 +1,16 @@
+- name: Install rustup
+  ansible.builtin.shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --default-toolchain none -y"
+  args:
+    creates: "{{ ansible_facts.user_dir }}/.cargo/bin/rustup"
+- name: Install stable rust
+  ansible.builtin.shell: "rustup toolchain install stable --component rustc,cargo,rustfmt,rust-std,rust-docs,rls,clippy,rust-src,rust-analysis"
+  args:
+    creates: "{{ ansible_facts.user_dir }}/.rustup/toolchains/stable-{{ ansible_architecture }}-unknown-linux-gnu/bin/cargo"
+- name: Add additional targets
+  ansible.builtin.shell: "rustup target add {{ item }}"
+  args:
+    creates: "{{ ansible_facts.user_dir }}/.rustup/toolchains/stable-{{ ansible_architecture }}-unknown-linux-gnu/lib/rustlib/{{item}}/lib/"
+  with_items:
+  - aarch64-unknown-uefi
+  - x86_64-unknown-uefi
+  - wasm32-wasi
